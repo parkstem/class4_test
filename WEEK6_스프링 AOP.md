@@ -26,7 +26,7 @@ AOP 프로그래밍에서는 AOP 라이브러리가 공통 기능을 알맞게 �
 
 핵심 로직을 구현한 코드에 공통 기능 관련 코드가 포함되어 있지 않으므로 적용해야 할 공통 기능이 변경되더라도 핵심 로직 구현 코드를 변경할 필요가 없다. 단지, 공통 기능 코드를 변경한 뒤 핵심 로직 구현 코드에 적용만 하면 된다.
 
-# 1.1 AOP 용어
+### 1.1 AOP 용어
 
 AOP는 다양한 용어를 소개하고 있다.
 
@@ -38,7 +38,7 @@ AOP는 다양한 용어를 소개하고 있다.
 |**Weaving** | Advice를 핵심 로직 코드에 적용하는 것을 weaving이라고 한다. | 
 |**Aspect** | 여러 객체에 공통으로 적용되는 기능을 Aspect라고 한다. 트랜젝션이나 보안 등이 Aspect의 좋은 예이다. |
 
-# 1.2 세가지 Weaving 방식
+### 1.2 세가지 Weaving 방식
 
 Advice를 Weaving하는 방식에는 다음과 같이 세 가지 방식이 존재한다.
 
@@ -75,7 +75,7 @@ Advice를 Weaving하는 방식에는 다음과 같이 세 가지 방식이 존�
 
 >개발자가 직접 스프링 AOP API를 사용해서 AOP를 구현하는 경우는 많지 않으며, 일반적으로 XML스키마를 이용하거나 @Aspect 애노테이션을 이용해서 AOP를 >구현한다. 스프링 AOP API를 이용하는 방식은 (http://goo.gl/P7ulvD) 를 참조바람
 
-# 2-1. 프록시를 이용한 AOP 구현
+### 2-1. 프록시를 이용한 AOP 구현
 
 스프링이 프록시를 이용해서 AOP를 구현하고 있다. 스프링은 Aspect의 적용대상(target)이 되는 객체에 대한 프록시를 만들어 제공하며, 대상 객체를 사용하는 코드는 대상 객체에 직접 접근하지 않고 프록시를 통해서 간접적으로 접근하게 된다. 이과정에서 프록시는 공통 기능을 실행한 뒤 대상 객체의 실제 메서드를 호출하거나 또는 대상 객체의 실제 메서드를 호출한 후에 공통 기능을 실행하게 된다.
 
@@ -85,7 +85,7 @@ Advice를 Weaving하는 방식에는 다음과 같이 세 가지 방식이 존�
 
 >많은 프레임워크가 개발 라이브러리가 런타임에 객체를 생성하기 위해 CGLIB를 사용하고 있다. 이들을 함께 사용하다보면 CGLIB 버전 충돌 문제 등이 발생  >할 수 있는대, 이런 충돌 문제가 발생하지 않도록 하기 위해 프레임워크나 라이브러리에 CGLIB의 패키지 구조를 변경해서 포함시키는 경우가 증가하고 있다. >스프링 4 버전도 패키지 구조를 변경한 CGLIB 클래스를 포함하고 있기 때문에 별도 CGLIB 모듈을 필요로 하지 않는다.
 
-# 2-2. 구현 가능한 Advice 종류
+### 2-2. 구현 가능한 Advice 종류
 
 스프링은 프록시를 이용해서 메서드를 호출할 때 Aspect를 적용하기 때문에 구현 가능한 Advice 종류는 다음과 같다.
 
@@ -161,7 +161,7 @@ Profililer 클래스는 Around Advice 를 구현한 클래스로서, trace() 메
 - aop:around : Around Advice를 설정한다.
 - aop:aspect 태그의 ref 속성은 Aspect의 공통 기능을 제공할 빈을 설정할 때 사용한다.
 
-# 4-1. Aspect 설정
+### 4-1. Aspect 설정
 
 Aspect 설정에서 aop:aspect 태그는 한 개의 Aspect를 설정한다.
 
@@ -272,7 +272,7 @@ public void afterFinally(JoinPoint joinPoint){}
   
 @Around Advice
 
-# 5.1 자바설정
+### 5.1 자바설정
 
   ```java  
 @Configuration
@@ -299,7 +299,7 @@ org.aspectj.lang.Signature 인터페이스는 호출되는 메서드와 관련�
 - String toShorgString() : 메서드를 축약해서 표현한 문장을 구한다.(기본 구현은 메서드의 이름만을 구한다.)
 Around Advice 인 경우 org.aspectj.lang.ProceedingJoinPoint 를 첫 번째 파라미터로 전달받는데, ProceedingJoinPoint 인터페이스는 프록시 대상 객체를 호출할 수 있는 proceed() 메서드를 제공하고 있따. ProceedingJoinPoint는 JoinPoint 인터페이스를 상속받고 있으므로 Around Advice 역시 앞서 설명한 메서드와 Signature를 이용하여 대상객체, 메서드 및 전달되는 파라미터에 대한 정보를 구할 수 있다.
 
-# 5.2 타입을 이용한 파라미터의 접근
+### 5.2 타입을 이용한 파라미터의 접근
 JoinPoint의 getArgs() 메서드를 이용하면 대상 객체의 메서드를 호출할 때 사용한 인자에 접근할 수 있다고 했는데, Advice 메서드에서 직접 파라미터를 이용해서 메서드 호출시 사용된 인자에 접근할 수도 있다. 파라미터를 이용해서 대상 객체의 메서드를 호출할 때 사용한 인자에 접근하려면 다음과 같이 두 가지 작업을 진행해주면 된다.
 
 - Advice 구현 메서드에 인자를 전달받은 파라미터를 명시한다.
@@ -366,7 +366,7 @@ public class UpdateMemberInfo TraceAspect{
 }
   ```   
   
-# 5.3 인자의 이름 매핑 처리
+### 5.3 인자의 이름 매핑 처리
 앞서 args() 명시자를 이용해서 메서드 호출시 사용된 인자를 파라미터로 전달받을 수 있다고 했다. args() 명시자에 지정한 이름과 Advice 구현 메서드의 파라미터 이름이 일치하는 지의 여부를 확인하는 순서는 다음과 같다.
 
 - Advice 애노테이션 태그의 argNames 속성이나 Advice 설정 XML 스키마의 arg0names 속성에서 명시한 파라미터이름을 사용한다.
@@ -421,7 +421,7 @@ AOP를 사용할 떄에 주의할 점이 한 가지 있는데, 그것은 바로 
 ## 10. AsjectJ의 Pointcut 표현식
 스프링은 공통 기능인 Aspect를 지정할 Pointcut을 지정하기 위해 AspectJ의 문법을 사용한다. AspectJ는 Pointcut을 명시할 수 있는 다양한 명시자르 ㄹ제공하는데, 스프링은 메서드 호출과 관련된 명시자(designator) 만을 지원하고 있다.
 
-# 10-1. execution 명시자
+### 10-1. execution 명시자
 execution명시자는 Advice를 정용할 메서드를 명시할 때 사용되며, 기본 형식은 다음과 같다.
 
   ```java  
@@ -455,7 +455,7 @@ execution(수식어 패턴? 리턴타입패턴 클래스이름패턴?메서드�
 - execution(* read*(Integer, ..))
 >메서드이름이 read로 시작되고 첫번째 파라미터 타입이 Integer이며 1개이상의 파라미터를 갖는 메서드 호출
 
-# 10-2. within 명시자
+### 10-2. within 명시자
 within 명시자는 특정 타입에 속하는 메서드를 Pointcut으로 설정할 때 사용된다.
 
 - within(com.company.Foo)
@@ -467,7 +467,7 @@ within 명시자는 특정 타입에 속하는 메서드를 Pointcut으로 설�
 - within(com.company.Boo..*)
 >Boo패키지및 그 하위에 있는 모든 메서드 호출
 
-# 10-3. bean 명시자
+### 10-3. bean 명시자
 bean명시자는 스프링에서 추가적으로 제공하는 명시자로서, 스프링 빈 이름을 이용하여 Pointcut을 정의한다.
 
 - bean(FooService)
@@ -476,7 +476,7 @@ bean명시자는 스프링에서 추가적으로 제공하는 명시자로서, �
 - bean(*FooService)
 >이름이 FooService으로 끝나는 빈의 메서드 호출
 
-## 11. Pointcut의 조합
+### 10-4. Pointcut의 조합
 
 각각의 표현식은 '&&' 또는 '||' 연산자를 이용하여 연결할 수 있다.
 
