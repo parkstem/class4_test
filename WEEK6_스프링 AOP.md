@@ -194,7 +194,7 @@ aop 스키마가 XML 설정을 이용해서 Advice, Pointcut 등을 설정하는
 - @Aspect 애노테이션을 이용해서 Aspect 클래스를 구현한다. 이때 Aspect 클래스는 Advice를 구현한 메서드와 Pointcut 포함한다.
 - XML 설정에서 <aop:aspectj-autoproxy /> 를 설정한다. @Configuration 기반 자바 설정을 이용한다면 @EnableAspectJAutoProxy 를 설정한다.
 
-  ```java
+```java
 @Aspect
 public class ProfilingAspect{
 
@@ -216,7 +216,7 @@ public class ProfilingAspect{
 		}
 	}
 }
-  ```
+```
 
 @Aspect 애노테이션을 사용했는데, @Aspect 애노테이션이 적용되는 클래스는 Advice 구현 메서드나 Pointcut 정의를 포함할 수 있게 된다. ProfilingAspect 클래스의 경우는 Advice 구현 메서드와 Pointcut 정의를 모두 포함하고 있다.
 
