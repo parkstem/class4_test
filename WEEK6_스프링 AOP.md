@@ -387,16 +387,15 @@ public void traceReturn(String memberId, UpdateInfo info){
 @AfterReturning(pointcut="args(memberId, info)", argNames="memberInfo, info")
 public void traceReturn(JoinPoint joinPoint, String memberId, UpdateInfo info){
 	....
-} ``` 
-
+}  
+```
 
 XML 스키마를 사용하는 경우 다음과 같이 arg-names 속성을 이용해서 파라미터 이름을 지정한다.
 
-  ```java  
+```java  
 <aop:after-returning pointcut="args(memberId, info)" method="traceReturn" returning="result" arg-names="joinPoint, memberId, info" />
 }
-  ``` 
-
+``` 
 
 argNames 속성 또는 arg-names 속성을 지정하지 않은 경우에는 디버그 정보를 이용한다.
 
