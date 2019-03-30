@@ -374,21 +374,20 @@ public class UpdateMemberInfo TraceAspect{
 - 디버그 옵션이 없을 경우 파라미터 개수를 이용해서 일치 여부를 유추한다.
 argNames속성은 Advice 구현 메서드의 파라미터 이름을 입력할 때 사용된다. 아래 코드는 사용 예를 보여주고 있다. argNames 속성은 모든 파라미터의 이름을 순서대로 표시해서 Pointcut 표현식에서 사용된 이름이 몇 번째 파라미터인지 검색할 수 있도록 한다. 
 
-  ```java  
+```java  
 @AfterReturning(pointcut="args(memberId, info)", argNames="memberInfo, info")
 public void traceReturn(String memberId, UpdateInfo info){
 	System.out.printf("[TA] 정보 수정 : 대상회원=%s, 수정정보=%s\n", memberId, info);
 }
-  ``` 
+``` 
 
 만약 첫 번째 파라미터 타입이 JoinPoint나 ProceedingJoinPoint 라면, JoinPoint 타입의 파라미터 이름을 포함하지 않는다.
 
-  ```java  
+```java  
 @AfterReturning(pointcut="args(memberId, info)", argNames="memberInfo, info")
 public void traceReturn(JoinPoint joinPoint, String memberId, UpdateInfo info){
 	....
-}
-  ``` 
+} ``` 
 
 
 XML 스키마를 사용하는 경우 다음과 같이 arg-names 속성을 이용해서 파라미터 이름을 지정한다.
