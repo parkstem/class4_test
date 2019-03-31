@@ -509,7 +509,7 @@ private void fooPublicOperation(){}
 - org.springframework.core.annotation.Order
 - org.springframework.core.Ordered
 
-  ```java 
+```java 
 @Aspect
 public class ArticleCacheAspect implements Ordered{
 	@Around("execution(public * *..ReadArticleService.*(..))")
@@ -520,7 +520,7 @@ public class ArticleCacheAspect implements Ordered{
 		return 2;
 	}
 }
-  ``` 
+``` 
 @Order 애노테이션
 
   ```java 
