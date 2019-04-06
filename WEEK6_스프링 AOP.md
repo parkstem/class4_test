@@ -223,7 +223,7 @@ public class ProfilingAspect{
 @Pointcut 애노테이션은 Pointcut을 정의하는 AspectJ 표현식을 값으로 가지며, @Pointcut 애노테이션이 적용된 메서드는 리턴 타입이 void이여야 한다.
 
   ```java
-  <aop:aspectj-autoprox />
+  <aop:aspectj-autoproxy/>
   ```
   
   이 태그는 @Aspect 애노테이션이 적용된 빈 객체를 Aspect로 사용하게 된다.
