@@ -418,10 +418,10 @@ AOP를 사용할 떄에 주의할 점이 한 가지 있는데, 그것은 바로 
 각 설정 방식에서 프록시 대상을 클래스로 사용할지 여부를 true로 지정해주면 실제 생성되는 프록시는 인터페이스가 이닌 클래스를 상속받아 생성된다.
 
 ## 10. AsjectJ의 Pointcut 표현식
-스프링은 공통 기능인 Aspect를 지정할 Pointcut을 지정하기 위해 AspectJ의 문법을 사용한다. AspectJ는 Pointcut을 명시할 수 있는 다양한 명시자르 ㄹ제공하는데, 스프링은 메서드 호출과 관련된 명시자(designator) 만을 지원하고 있다.
+스프링은 공통 기능인 Aspect를 지정할 Pointcut을 지정하기 위해 AspectJ의 문법을 사용한다. AspectJ는 Pointcut을 명시할 수 있는 다양한 명시자를 제공하는데, 스프링은 메서드 호출과 관련된 명시자(designator) 만을 지원하고 있다.
 
 ### 10-1. execution 명시자
-execution명시자는 Advice를 정용할 메서드를 명시할 때 사용되며, 기본 형식은 다음과 같다.
+execution명시자는 Advice를 정용할 메드를 명시할 때 사용되며, 기본 형식은 다음과 같다.
 
   ```java  
 execution(수식어 패턴? 리턴타입패턴 클래스이름패턴?메서드이름패턴(파라미터이름패턴)
