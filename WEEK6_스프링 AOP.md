@@ -293,12 +293,13 @@ JoinPoint 인터페이스는 호출되는 대상 객체, 메서드 그리고 전
 - Sinature getSignature() : 호출되는 메서드에 대한 정보를 구한다.
 - Object getTarget() : 대상 객체를 구한다.
 - Object[] getArgs() : 파라미터 목록을 구한다.
+
 org.aspectj.lang.Signature 인터페이스는 호출되는 메서드와 관련된 정보를 제공하기 위해 다음과 같은 메서드를 정의하고 있다.
 
 - String getName() : 메서드의 이름을 구한다.
 - String toLongString() : 메서드를 완전한게 표현한 문장을 구한다.(메서드의 리턴ㅇ타입, 파라미터 타입이 모두 표시된다.)
 - String toShorgString() : 메서드를 축약해서 표현한 문장을 구한다.(기본 구현은 메서드의 이름만을 구한다.)
-Around Advice 인 경우 org.aspectj.lang.ProceedingJoinPoint 를 첫 번째 파라미터로 전달받는데, ProceedingJoinPoint 인터페이스는 프록시 대상 객체를 호출할 수 있는 proceed() 메서드를 제공하고 있따. ProceedingJoinPoint는 JoinPoint 인터페이스를 상속받고 있으므로 Around Advice 역시 앞서 설명한 메서드와 Signature를 이용하여 대상객체, 메서드 및 전달되는 파라미터에 대한 정보를 구할 수 있다.
+Around Advice 인 경우 org.aspectj.lang.ProceedingJoinPoint 를 첫 번째 파라미터로 전달받는데, ProceedingJoinPoint 인터페이스는 프록시 대상 객체를 호출할 수 있는 proceed() 메서드를 제공하고 있다. ProceedingJoinPoint는 JoinPoint 인터페이스를 상속받고 있으므로 Around Advice 역시 앞서 설명한 메서드와 Signature를 이용하여 대상객체, 메서드 및 전달되는 파라미터에 대한 정보를 구할 수 있다.
 
 ## 8. 타입을 이용한 파라미터의 접근
 JoinPoint의 getArgs() 메서드를 이용하면 대상 객체의 메서드를 호출할 때 사용한 인자에 접근할 수 있다고 했는데, Advice 메서드에서 직접 파라미터를 이용해서 메서드 호출시 사용된 인자에 접근할 수도 있다. 파라미터를 이용해서 대상 객체의 메서드를 호출할 때 사용한 인자에 접근하려면 다음과 같이 두 가지 작업을 진행해주면 된다.
